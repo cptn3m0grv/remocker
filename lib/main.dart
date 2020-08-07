@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
 String input;
 
-void linux(String Command) async{
+// void linux(String Command) async{
 
-}
+// }
 
 class MyApp extends StatelessWidget{
   @override
@@ -42,6 +42,8 @@ class HomePage extends StatelessWidget{
                   "     remocker",
                   style: TextStyle(
                     fontSize: 20,
+                    fontFamily: 'Ubuntu',
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
               ],
@@ -63,7 +65,12 @@ class HomePage extends StatelessWidget{
         ),
       ),
       appBar: AppBar(
-        title: Text('REMOCKER'),
+        title: Text(
+          'Remocker',
+          style: TextStyle(
+            fontFamily: 'Ubuntu',
+          ),
+        ),
         backgroundColor: Colors.deepPurple[900],
       ),
       body: Container(
