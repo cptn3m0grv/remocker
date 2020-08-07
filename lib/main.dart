@@ -39,6 +39,7 @@ class HomePage extends StatelessWidget{
                 Icon(
                   Icons.cloud,
                   size: 50.0,
+                  color: Colors.grey,
                 ),
                 Text(
                   "     remocker",
@@ -54,13 +55,30 @@ class HomePage extends StatelessWidget{
             Container(
               alignment: Alignment.topLeft,
               margin: EdgeInsets.all(10),
-              child: Card(
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/basicCommands');
-                  },
-                  child: Text('Linux'),
-                ),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.navigate_next,
+                    size: 50.0,
+                    color: Colors.grey,
+                  ),
+                  Card(
+                    color: Colors.grey,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/basicCommands');
+                      },
+                      child: Text(
+                        '             Linux              ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Ubuntu',
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )
           ],
