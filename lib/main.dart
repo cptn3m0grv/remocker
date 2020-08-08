@@ -20,11 +20,14 @@ class MyApp extends StatelessWidget{
         '/commandsList' : (context) => CommandLists(),
         '/runCommands' : (context) => ManualCommands(),
         '/dockerHome' : (context) => DockerHome(),
+        '/sf' : (context) => SF(),
       },
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+// APPLICATION HOME PAGE
 
 class HomePage extends StatelessWidget{
   @override
@@ -37,18 +40,31 @@ class HomePage extends StatelessWidget{
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(
-                  Icons.cloud,
-                  size: 50.0,
-                  color: Colors.grey,
-                ),
-                Text(
-                  "     remocker",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Ubuntu',
-                    fontStyle: FontStyle.italic,
-                  ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  margin: EdgeInsets.all(10),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.cloud,
+                        size: 50.0,
+                        color: Colors.grey,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                        child: Text(
+                          '     remocker',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Ubuntu',
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),  
                 ),
               ],
             ),
@@ -127,10 +143,20 @@ class HomePage extends StatelessWidget{
         width: double.infinity,
         height: double.infinity,
         color: Colors.deepPurple[700],
+        // child: Center(
+        //   child: InkWell(
+        //     onTap: () {
+        //       Navigator.pushNamed(context, '/sf');
+        //     },
+        //     child: Text("State Full Widget"),
+        //   ),
+        // ),
       ),
     );
   }
 }
+
+// LINUX COMMANDS HOME PAGE
 
 class BasicCommands extends StatelessWidget{
   @override
@@ -194,6 +220,8 @@ class BasicCommands extends StatelessWidget{
   }
 }
 
+// LINUX COMMANDS LIST
+
 class CommandLists extends StatelessWidget{
   @override
   Widget build(BuildContext context){
@@ -250,6 +278,8 @@ class CommandLists extends StatelessWidget{
     );
   }
 }
+
+// MANUAL LINUX COMMANDS
 
 class ManualCommands extends StatelessWidget{
   @override
@@ -317,6 +347,8 @@ class ManualCommands extends StatelessWidget{
   }
 }
 
+// DOCKER HOME PAGE  
+
 class DockerHome extends StatelessWidget{
   @override
   Widget build(BuildContext context){
@@ -351,21 +383,79 @@ class DockerHome extends StatelessWidget{
               ),
               Container(
                 margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
                 width: 300,
                 height: 170,
                 color: Colors.grey,
                 child: Column(
                   children: <Widget>[
-                    Text("List"),
-                    Text("Gaurav"),
-                    Text("Hello"),
-                    Text("Grv"),
+                    Card(
+                      child: FlatButton(
+                        padding: EdgeInsets.all(20),
+                        onPressed: null,
+                        child: Text(
+                          "Basic commands",
+                          style: TextStyle(
+                            fontFamily: 'Ubuntu',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Card(
+                      child: FlatButton(
+                        padding: EdgeInsets.all(20),
+                        onPressed: null,
+                        child: Text(
+                          "Advance Features",
+                          style: TextStyle(
+                            fontFamily: 'Ubuntu',
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+// Stateful Widget for testing
+
+class SF extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState(){
+    return MySF();
+  }
+}
+
+class MySF extends State<SF> {
+  int counter = 0;
+  bool cbValue = false;
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Stateful'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Text("Text Value => $counter"),
+          Checkbox(
+            value: cbValue,
+            onChanged: (bool newValue) {
+              cbValue = !cbValue;
+              counter++;
+              setState(() {
+                
+              });
+            },
+          ),
+        ],
       ),
     );
   }
