@@ -339,20 +339,26 @@ class DockerHome extends StatelessWidget{
           child: Column(
             children: <Widget>[
               Container(
-                width: 100,
-                height: 100,
-                child: Image.asset(
-                  '/assets/images/dockerHome.png',
-                  fit: BoxFit.fill,
+                margin: EdgeInsets.all(20),
+                width: 220,
+                height: 150,
+                child: Card(
+                  child: Image.asset(
+                    'assets/images/dockerHome.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               Container(
+                margin: EdgeInsets.all(10),
                 width: 300,
                 height: 170,
                 color: Colors.grey,
                 child: Column(
                   children: <Widget>[
-                    
+                    Text("List"),
+                    Text("Gaurav"),
+                    Text("Hello"),
                   ],
                 ),
               ),
