@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget{
         '/basicCommands' : (context) => BasicCommands(),
         '/commandsList' : (context) => CommandLists(),
         '/runCommands' : (context) => ManualCommands(),
+        '/dockerHome' : (context) => DockerHome(),
       },
       debugShowCheckedModeBanner: false,
     );
@@ -80,7 +81,36 @@ class HomePage extends StatelessWidget{
                   ),
                 ],
               ),
-            )
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.all(10),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.navigate_next,
+                    size: 50.0,
+                    color: Colors.grey,
+                  ),
+                  Card(
+                    color: Colors.grey,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/dockerHome');
+                      },
+                      child: Text(
+                        '             Docker           ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Ubuntu',
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -280,6 +310,53 @@ class ManualCommands extends StatelessWidget{
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DockerHome extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple[900],
+        title: Text(
+          "Docker Home",
+          style: TextStyle(
+            fontFamily: 'Ubuntu',
+          ),
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.deepPurple[700],
+        padding: EdgeInsets.all(30),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: 100,
+                height: 100,
+                child: Image.asset(
+                  '/assets/images/dockerHome.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Container(
+                width: 300,
+                height: 170,
+                color: Colors.grey,
+                child: Column(
+                  children: <Widget>[
+                    
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
