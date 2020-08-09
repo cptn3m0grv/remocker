@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'ui/ui.dart';
 // import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget{
         '/commandsList' : (context) => CommandLists(),
         '/runCommands' : (context) => ManualCommands(),
         '/dockerHome' : (context) => DockerHome(),
-        '/sf' : (context) => SF(),
+        '/dockerBasicFeature' : (context) => BasicFeature(),
+        // '/sf' : (context) => SF(),
       },
       debugShowCheckedModeBanner: false,
     );
@@ -137,12 +139,12 @@ class HomePage extends StatelessWidget{
             fontFamily: 'Ubuntu',
           ),
         ),
-        backgroundColor: Colors.deepPurple[900],
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.deepPurple[700],
+        color: Color.fromARGB(250, 0, 33, 5),
         // child: Center(
         //   child: InkWell(
         //     onTap: () {
@@ -169,12 +171,12 @@ class BasicCommands extends StatelessWidget{
             fontFamily: 'Ubuntu',
           ),
         ),
-        backgroundColor: Colors.deepPurple[900],
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.deepPurple[700],
+        color: Color.fromARGB(250, 0, 33, 5),
         child: Center(
           child: Container(
             padding: EdgeInsets.all(20),
@@ -233,12 +235,12 @@ class CommandLists extends StatelessWidget{
             fontFamily: 'Ubuntu',
           ),
         ),
-        backgroundColor: Colors.deepPurple[900],
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.deepPurple[700],
+        color: Color.fromARGB(250, 0, 33, 5),
         child: Center(
           child: Container(
             color: Colors.grey,
@@ -286,7 +288,7 @@ class ManualCommands extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[900],
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
         title: Text(
           'Run Manual Commands',
           style: TextStyle(
@@ -297,7 +299,7 @@ class ManualCommands extends StatelessWidget{
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.deepPurple[700],
+        color: Color.fromARGB(250, 0, 33, 5),
         padding: EdgeInsets.all(30),
         child: Center(
           child: Container(
@@ -354,7 +356,7 @@ class DockerHome extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple[900],
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
         title: Text(
           "Docker Home",
           style: TextStyle(
@@ -365,7 +367,7 @@ class DockerHome extends StatelessWidget{
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.deepPurple[700],
+        color: Color.fromARGB(250, 0, 33, 5),
         padding: EdgeInsets.all(30),
         child: Center(
           child: Column(
@@ -392,9 +394,11 @@ class DockerHome extends StatelessWidget{
                     Card(
                       child: FlatButton(
                         padding: EdgeInsets.all(20),
-                        onPressed: null,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/dockerBasicFeature');
+                        },
                         child: Text(
-                          "Basic commands",
+                          "    Basic Features    ",
                           style: TextStyle(
                             fontFamily: 'Ubuntu',
                           ),
@@ -424,39 +428,65 @@ class DockerHome extends StatelessWidget{
   }
 }
 
-// Stateful Widget for testing
+// Basic features include the following options
+//   -->Availaible images, Active ps, All  ps , IP of a particular container by name, Remove an image, Remove a process 
 
-class SF extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState(){
-    return MySF();
-  }
-}
-
-class MySF extends State<SF> {
-  int counter = 0;
-  bool cbValue = false;
+class BasicFeature extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stateful'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Text("Text Value => $counter"),
-          Checkbox(
-            value: cbValue,
-            onChanged: (bool newValue) {
-              cbValue = !cbValue;
-              counter++;
-              setState(() {
-                
-              });
-            },
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
+        title: Text(
+          "Basic Features",
+          style: TextStyle(
+            fontFamily: 'Ubuntu',
           ),
-        ],
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Color.fromARGB(250, 0, 33, 5),
       ),
     );
   }
 }
+
+
+// Stateful Widget for testing
+
+// class SF extends StatefulWidget{
+//   @override
+//   State<StatefulWidget> createState(){
+//     return MySF();
+//   }
+// }
+
+// class MySF extends State<SF> {
+//   int counter = 0;
+//   bool cbValue = false;
+//   @override
+//   Widget build(BuildContext context){
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Stateful'),
+//       ),
+//       body: Column(
+//         children: <Widget>[
+//           Text("Text Value => $counter"),
+//           Checkbox(
+//             value: cbValue,
+//             onChanged: (bool newValue) {
+//               cbValue = !cbValue;
+//               counter++;
+//               setState(() {
+                
+//               });
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
