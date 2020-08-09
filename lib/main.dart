@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget{
         '/runCommands' : (context) => ManualCommands(),
         '/dockerHome' : (context) => DockerHome(),
         '/dockerBasicFeature' : (context) => BasicFeature(),
+        '/SST' : (context) => SliverScrollTest(),
         // '/sf' : (context) => SF(),
       },
       debugShowCheckedModeBanner: false,
@@ -448,6 +449,37 @@ class BasicFeature extends StatelessWidget{
         width: double.infinity,
         height: double.infinity,
         color: Color.fromARGB(250, 0, 33, 5),
+        child: Text("BODY"),
+      ),
+    );
+  }
+}
+
+// SLIVER SCROLL TEST ON DOCKER HOME PAGE
+
+class SliverScrollTest extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            title: Text(
+              "Docker Home",
+              style: TextStyle(
+                fontFamily: 'Ubuntu',
+              ),
+            ),
+            backgroundColor: Color.fromARGB(250, 2, 20, 5),
+            expandedHeight: 200,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.asset(
+                'assets/images/dockerHome.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
