@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 String input;
+String container;
 
 // void linux(String Command) async{
 
@@ -462,10 +463,12 @@ class BasicFeature extends StatelessWidget{
                    Row(
                      children: <Widget>[
                        Card(
+                         margin: EdgeInsets.all(10),
                          child: FlatButton(
                            onPressed: null,
                            child: Text(
-                             "    Docker Version    ",
+                             "  Docker Version  ",
+                             textAlign: TextAlign.center,
                              style: TextStyle(
                                fontFamily: 'Ubuntu',
                              ),
@@ -473,10 +476,12 @@ class BasicFeature extends StatelessWidget{
                          ),
                        ),
                        Card(
+                         margin: EdgeInsets.all(10),
                          child: FlatButton(
                            onPressed: null,
                            child: Text(
-                             "   Available Images    ",
+                             "  Available Images  ",
+                             textAlign: TextAlign.center,
                              style: TextStyle(
                                fontFamily: 'Ubuntu',
                              )
@@ -488,10 +493,12 @@ class BasicFeature extends StatelessWidget{
                    Row(
                      children: <Widget>[
                        Card(
+                         margin: EdgeInsets.all(10),
                          child: FlatButton(
                            onPressed: null,
                            child: Text(
-                             "   Active Processes  ",
+                             " Active Processes",
+                             textAlign: TextAlign.center,
                              style: TextStyle(
                                fontFamily: 'Ubuntu',
                              ),
@@ -499,10 +506,12 @@ class BasicFeature extends StatelessWidget{
                          ),
                        ),
                        Card(
+                         margin: EdgeInsets.all(10),
                          child: FlatButton(
                            onPressed: null,
                            child: Text(
-                             "       All Processes       ",
+                             "      All Processes     ",
+                             textAlign: TextAlign.center,
                              style: TextStyle(
                                fontFamily: 'Ubuntu',
                              )
@@ -510,6 +519,37 @@ class BasicFeature extends StatelessWidget{
                          ),
                        ),
                      ],
+                   ),
+                   Text("\n"),
+                   Text(
+                     '- - - - - - - - - -',
+                     textAlign: TextAlign.center,
+                     style: TextStyle(
+                       fontFamily: 'Ubuntu',
+                     ),
+                    ),
+                   Text("\n"),
+                   Card(
+                     margin: EdgeInsets.only(
+                       left: 20,
+                       right: 20,
+                     ),
+                     child: TextField(
+                      onChanged: (value) {
+                        container = value;
+                      },
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                      autocorrect: false,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.all(20),
+                        hintText: "Container Name",
+                        prefixIcon: Icon(Icons.arrow_forward),
+                      ),
+                     ),
                    ),
                  ],  
                 ),
