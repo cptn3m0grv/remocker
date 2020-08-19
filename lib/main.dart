@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dotted_line/dotted_line.dart';
 // import 'ui/ui.dart';
 // import 'package:http/http.dart' as http;
 
@@ -19,12 +20,10 @@ class MyApp extends StatelessWidget{
       routes: <String, WidgetBuilder>{
         '/' : (context) => HomePage(),
         '/basicCommands' : (context) => BasicCommands(),
-        '/commandsList' : (context) => CommandLists(),
-        '/runCommands' : (context) => ManualCommands(),
+        // '/commandsList' : (context) => CommandLists(),
+        // '/runCommands' : (context) => ManualCommands(),
         '/dockerHome' : (context) => DockerHome(),
         '/dockerBasicFeature' : (context) => BasicFeature(),
-        // '/SST' : (context) => SliverScrollTest(),
-        // '/sf' : (context) => SF(),
       },
       debugShowCheckedModeBanner: false,
     );
@@ -147,14 +146,6 @@ class HomePage extends StatelessWidget{
         width: double.infinity,
         height: double.infinity,
         color: Color.fromARGB(250, 0, 33, 5),
-        // child: Center(
-        //   child: InkWell(
-        //     onTap: () {
-        //       Navigator.pushNamed(context, '/sf');
-        //     },
-        //     child: Text("State Full Widget"),
-        //   ),
-        // ),
       ),
     );
   }
@@ -162,194 +153,291 @@ class HomePage extends StatelessWidget{
 
 // LINUX COMMANDS HOME PAGE
 
-class BasicCommands extends StatelessWidget{
+class BasicCommands extends StatefulWidget{
   @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Linux Commands",
-          style: TextStyle(
-            fontFamily: 'Ubuntu',
-          ),
-        ),
-        backgroundColor: Color.fromARGB(250, 2, 20, 5),
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Color.fromARGB(250, 0, 33, 5),
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            color: Colors.grey,
-            width: 300,
-            height: 170,
-            child: Column(
-              children: <Widget>[
-                Card(
-                  child: FlatButton(
-                    padding: EdgeInsets.all(20),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/commandsList');
-                    },
-                    child: Text(
-                      "Show Commands List",
-                      style: TextStyle(
-                        fontFamily: 'Ubuntu',
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  child: FlatButton(
-                    padding: EdgeInsets.all(20),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/runCommands');
-                    },
-                    child: Text(
-                      "Run Manual commands",
-                      style: TextStyle(
-                        fontFamily: 'Ubuntu',
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  _BasicCommands createState() => _BasicCommands();
 }
 
-// LINUX COMMANDS LIST
-
-class CommandLists extends StatelessWidget{
+class _BasicCommands extends State<BasicCommands>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(250, 2, 20, 5),
         title: Text(
-          "Commands List",
+          "Terminal",
           style: TextStyle(
             fontFamily: 'Ubuntu',
-          ),
+            fontSize: 25,
+          )
         ),
-        backgroundColor: Color.fromARGB(250, 2, 20, 5),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Color.fromARGB(250, 0, 33, 5),
-        child: Center(
-          child: Container(
-            color: Colors.grey,
-            width: 300,
-            height: 180,
-            child: Column(
-              children: <Widget>[
-                Card(
-                  child: FlatButton(
-                    onPressed: () {
-                      print("Date");
-                    },
-                    child: Text("Date"),
+      body: Center(
+        child: ListView(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.grey,
+              child: Column(
+                children: [
+                  Card(
+                    child: TextField(
+                      onChanged: null,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        hintText: 'Enter Command',
+                        hintStyle: TextStyle(
+                          fontFamily: 'Ubuntu',
+                        ),
+                        prefixIcon: Icon(Icons.arrow_forward),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          )
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                      ),
+                    ),
                   ),
-                ),
-                Card(
-                  child: FlatButton(
-                    onPressed: () {
-                      print("Calendar");
-                    },
-                    child: Text("Cal"),
+                  Text("    "),
+                  FloatingActionButton.extended(
+                    onPressed: null,
+                    backgroundColor: Color.fromARGB(200, 2, 20, 5),
+                    label: Text(
+                      "  Run  ",
+                      style: TextStyle(
+                        fontFamily: 'Ubuntu',
+                        fontSize: 20,
+                      ),
+                    ),
+                    icon: Icon(Icons.directions_run),
+                  ),
+                  Text("   "),
+                  DottedLine(
+                    dashLength: 20,
+                  ),
+                  Text("   "),
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                  ),
+                  Row(
+                    children: [
+                      Card(
+                        child: Text(
+                          "   Date   ",
+                          style: TextStyle(
+                            fontFamily: 'Ubuntu',
+                            fontSize: 25,
+                          ),
+                        ),
+                      )
+                    ],
                   )
-                ),
-                Card(
-                  child: FlatButton(
-                    onPressed: () {
-                      print("List");
-                    },
-                    child: Text("List"),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
-// MANUAL LINUX COMMANDS
+// class BasicCommands extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context){
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           "Linux Commands",
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//           ),
+//         ),
+//         backgroundColor: Color.fromARGB(250, 2, 20, 5),
+//       ),
+//       body: Container(
+//         width: double.infinity,
+//         height: double.infinity,
+//         color: Color.fromARGB(250, 0, 33, 5),
+//         child: Center(
+//           child: Container(
+//             padding: EdgeInsets.all(20),
+//             color: Colors.grey,
+//             width: 300,
+//             height: 170,
+//             child: Column(
+//               children: <Widget>[
+//                 Card(
+//                   child: FlatButton(
+//                     padding: EdgeInsets.all(20),
+//                     onPressed: () {
+//                       Navigator.pushNamed(context, '/commandsList');
+//                     },
+//                     child: Text(
+//                       "Show Commands List",
+//                       style: TextStyle(
+//                         fontFamily: 'Ubuntu',
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 Card(
+//                   child: FlatButton(
+//                     padding: EdgeInsets.all(20),
+//                     onPressed: () {
+//                       Navigator.pushNamed(context, '/runCommands');
+//                     },
+//                     child: Text(
+//                       "Run Manual commands",
+//                       style: TextStyle(
+//                         fontFamily: 'Ubuntu',
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
-class ManualCommands extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(250, 2, 20, 5),
-        title: Text(
-          'Run Manual Commands',
-          style: TextStyle(
-            fontFamily: 'Ubuntu',
-          ),
-        )
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Color.fromARGB(250, 0, 33, 5),
-        padding: EdgeInsets.all(30),
-        child: Center(
-          child: Container(
-            width: 300,
-            height: 170,
-            color: Colors.grey,
-            child: Column(
-              children: <Widget>[
-                Card(
-                  child: TextField(
-                    onChanged: (value) {
-                      input = value;
-                    },
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                    autocorrect: false,
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.all(20),
-                      hintText: "Command",
-                      prefixIcon: Icon(Icons.arrow_forward),
-                    ),
-                  ),
-                ),
-                Card(
-                  child: FlatButton(
-                    padding: EdgeInsets.all(20),
-                    onPressed: () {
-                      print("Hello " + input);
-                    },
-                    child: Text(
-                      'Run',
-                      style: TextStyle(
-                        fontFamily: 'Ubuntu',
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+// // LINUX COMMANDS LIST
+
+// class CommandLists extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context){
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           "Commands List",
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//           ),
+//         ),
+//         backgroundColor: Color.fromARGB(250, 2, 20, 5),
+//       ),
+//       body: Container(
+//         width: double.infinity,
+//         height: double.infinity,
+//         color: Color.fromARGB(250, 0, 33, 5),
+//         child: Center(
+//           child: Container(
+//             color: Colors.grey,
+//             width: 300,
+//             height: 180,
+//             child: Column(
+//               children: <Widget>[
+//                 Card(
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       print("Date");
+//                     },
+//                     child: Text("Date"),
+//                   ),
+//                 ),
+//                 Card(
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       print("Calendar");
+//                     },
+//                     child: Text("Cal"),
+//                   )
+//                 ),
+//                 Card(
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       print("List");
+//                     },
+//                     child: Text("List"),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // MANUAL LINUX COMMANDS
+
+// class ManualCommands extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context){
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Color.fromARGB(250, 2, 20, 5),
+//         title: Text(
+//           'Run Manual Commands',
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//           ),
+//         )
+//       ),
+//       body: Container(
+//         width: double.infinity,
+//         height: double.infinity,
+//         color: Color.fromARGB(250, 0, 33, 5),
+//         padding: EdgeInsets.all(30),
+//         child: Center(
+//           child: Container(
+//             width: 300,
+//             height: 170,
+//             color: Colors.grey,
+//             child: Column(
+//               children: <Widget>[
+//                 Card(
+//                   child: TextField(
+//                     onChanged: (value) {
+//                       input = value;
+//                     },
+//                     style: TextStyle(
+//                       fontSize: 20,
+//                     ),
+//                     autocorrect: false,
+//                     cursorColor: Colors.black,
+//                     decoration: InputDecoration(
+//                       border: OutlineInputBorder(),
+//                       contentPadding: EdgeInsets.all(20),
+//                       hintText: "Command",
+//                       prefixIcon: Icon(Icons.arrow_forward),
+//                     ),
+//                   ),
+//                 ),
+//                 Card(
+//                   child: FlatButton(
+//                     padding: EdgeInsets.all(20),
+//                     onPressed: () {
+//                       print("Hello " + input);
+//                     },
+//                     child: Text(
+//                       'Run',
+//                       style: TextStyle(
+//                         fontFamily: 'Ubuntu',
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 // DOCKER HOME PAGE  
 
@@ -561,71 +649,3 @@ class BasicFeature extends StatelessWidget{
     );
   }
 }
-
-// SLIVER SCROLL TEST ON DOCKER HOME PAGE
-
-// class SliverScrollTest extends StatelessWidget{
-//   @override
-//   Widget build(BuildContext context){
-//     return Scaffold(
-//       body: CustomScrollView(
-//         slivers: <Widget>[
-//           SliverAppBar(
-//             title: Text(
-//               "Docker Home",
-//               style: TextStyle(
-//                 fontFamily: 'Ubuntu',
-//               ),
-//             ),
-//             backgroundColor: Color.fromARGB(250, 2, 20, 5),
-//             expandedHeight: 200,
-//             flexibleSpace: FlexibleSpaceBar(
-//               background: Image.asset(
-//                 'assets/images/dockerHome.png',
-//                 fit: BoxFit.cover,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
-// Stateful Widget for testing
-
-// class SF extends StatefulWidget{
-//   @override
-//   State<StatefulWidget> createState(){
-//     return MySF();
-//   }
-// }
-
-// class MySF extends State<SF> {
-//   int counter = 0;
-//   bool cbValue = false;
-//   @override
-//   Widget build(BuildContext context){
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Stateful'),
-//       ),
-//       body: Column(
-//         children: <Widget>[
-//           Text("Text Value => $counter"),
-//           Checkbox(
-//             value: cbValue,
-//             onChanged: (bool newValue) {
-//               cbValue = !cbValue;
-//               counter++;
-//               setState(() {
-                
-//               });
-//             },
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
