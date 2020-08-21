@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_line/dotted_line.dart';
+import 'package:http/http.dart' as http;
 
 class BasicCommands extends StatefulWidget{
   @override
@@ -7,9 +8,19 @@ class BasicCommands extends StatefulWidget{
 }
 
 class _BasicCommands extends State<BasicCommands>{
+  
+  var inputFromUser;
+  String outputOfCommand;
+  String serverIP = "192.168.10.11";
 
-  String inp;
-  String out;
+  getOutput(String cmd) async{
+    var url = 'http://$serverIP/cgi-bin/getCommand.py?q=$cmd';
+    var response = await http.get(url);
+    setState(() {
+      var body = response.body;
+      outputOfCommand = body;
+    });
+  }
 
   @override
   Widget build(BuildContext context){
@@ -38,7 +49,7 @@ class _BasicCommands extends State<BasicCommands>{
                   Card(
                     child: TextField(
                       onChanged: (value) {
-                        inp = value;
+                        inputFromUser = value;
                       },
                       style: TextStyle(
                         fontSize: 20,
@@ -63,9 +74,7 @@ class _BasicCommands extends State<BasicCommands>{
                   Text("    "),
                   FloatingActionButton.extended(
                     onPressed: () {
-                      setState(() {
-                        out = inp;
-                      });
+                      getOutput(inputFromUser);
                     },
                     backgroundColor: Color.fromARGB(200, 2, 20, 5),
                     label: Text(
@@ -100,9 +109,7 @@ class _BasicCommands extends State<BasicCommands>{
                       Card(
                         child: FlatButton(
                           onPressed: () {
-                            setState(() {
-                              out = "date";
-                            });
+                            getOutput("date");
                           },
                           child: Text(
                             "   Date   ",
@@ -116,9 +123,7 @@ class _BasicCommands extends State<BasicCommands>{
                       Card(
                         child: FlatButton(
                           onPressed: () {
-                            setState(() {
-                              out = "calendar";
-                            });
+                            getOutput("cal");
                           },
                           child: Text(
                             "   Cal   ",
@@ -132,9 +137,7 @@ class _BasicCommands extends State<BasicCommands>{
                       Card(
                         child: FlatButton(
                           onPressed: () {
-                            setState(() {
-                              out = "process list";
-                            });
+                            getOutput("ps");
                           },
                           child: Text(
                             "   Ps   ",
@@ -166,7 +169,7 @@ class _BasicCommands extends State<BasicCommands>{
                   Text(" "),
                   RichText(
                     text: TextSpan(
-                      text: "$out",
+                      text: outputOfCommand,
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'ubuntu',
