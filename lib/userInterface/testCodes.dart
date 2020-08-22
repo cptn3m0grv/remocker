@@ -25,3 +25,35 @@
 
 //   _animateToIndex(i) => _controller.animateTo(_height * i, duration: Duration(seconds: 2), curve: Curves.fastOutSlowIn);
 // }
+
+
+
+// body: CustomScrollView(
+        //   slivers: <Widget>[
+        //     SliverAppBar(
+        //       expandedHeight: 200,
+        //       title: Text("Docker"),
+        //       flexibleSpace: FlexibleSpaceBar(
+        //         background: Image.asset("assets/images/dockerHome.png"),
+        //       ),
+        //     ),
+        //     SliverList(
+        //       delegate: SliverChildBuilderDelegate((context, index) => 
+        //         Card(
+        //           child: Container(
+        //             padding: EdgeInsets.all(10.0),
+        //             child: Row(
+        //               mainAxisAlignment: MainAxisAlignment.start,
+        //               children: <Widget>[
+        //                 CircleAvatar(
+        //                   backgroundColor: Colors.black,
+        //                 ),
+        //                 Text("Docker"),
+        //               ],
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
