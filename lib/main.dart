@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget{
         '/' : (context) => HomePage(),
         '/basicCommands' : (context) => BasicCommands(),
         '/dockerHome' : (context) => DockerHome(),
-        '/dockerBasicFeature' : (context) => BasicFeature(),
       },
       debugShowCheckedModeBanner: false,
     );
