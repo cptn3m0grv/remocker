@@ -42,7 +42,7 @@ class _BasicCommands extends State<BasicCommands>{
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height * 0.5,
               color: Color(0xff32dbc6),
               child: Column(
                 children: [
@@ -155,15 +155,21 @@ class _BasicCommands extends State<BasicCommands>{
                     dashLength: 20,
                   ),
                   Text(" "),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
                   RichText(
                     text: TextSpan(
-                      text: "Output",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        fontFamily: 'Ubuntu',
-                      ),
+                      text: "Output :",
+                        style: TextStyle(
+                          color: Colors.limeAccent[700],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          fontFamily: 'Ubuntu',
+                        ),
                     )
                   ),
                   Text(" "),
@@ -171,13 +177,13 @@ class _BasicCommands extends State<BasicCommands>{
                     text: TextSpan(
                       text: outputOfCommand,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontFamily: 'ubuntu',
                         fontWeight: FontWeight.normal,
                         fontSize: 20,
-                      )
-                    )
-                  )
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
