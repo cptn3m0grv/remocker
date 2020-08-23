@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 String input;
 String container;
@@ -13,6 +14,17 @@ class DockerHome extends StatefulWidget{
 class _DockerHome extends State<DockerHome>{
 
   var inputFromUser;
+  String outputOfCommand;
+  String serverIP = "192.168.10.11";
+
+  getOutput(String cmd) async{
+    var url = 'http://$serverIP/cgi-bin/getDocker.py?q=$cmd';
+    var response = await http.get(url);
+    setState(() {
+      var body = response.body;
+      outputOfCommand = body;
+    });
+  }
 
 
   @override
@@ -35,7 +47,7 @@ class _DockerHome extends State<DockerHome>{
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height * 0.6,
               color: Color(0xff32dbc6),
               child: Column(
                 children: [
@@ -67,8 +79,7 @@ class _DockerHome extends State<DockerHome>{
                   Text("    "),
                   FloatingActionButton.extended(
                     onPressed: () {
-                      print("Run pressed");
-                      // getOutput(inputFromUser);
+                      getOutput(inputFromUser);
                     },
                     backgroundColor: Color.fromARGB(200, 2, 20, 5),
                     label: Text(
@@ -106,7 +117,9 @@ class _DockerHome extends State<DockerHome>{
                         children: [
                           Card(
                             child: FlatButton(
-                              onPressed: null,
+                              onPressed: () {
+                                getOutput("images");
+                              },
                               child: Text(
                                 "Availaible Images",
                                 style: TextStyle(
@@ -118,7 +131,9 @@ class _DockerHome extends State<DockerHome>{
                           ),
                           Card(
                             child: FlatButton(
-                              onPressed: null,
+                              onPressed: () {
+                                getOutput("ps");
+                              },
                               child: Text(
                                 "Active Processes",
                                 style: TextStyle(
@@ -135,7 +150,9 @@ class _DockerHome extends State<DockerHome>{
                         children: [
                           Card(
                             child: FlatButton(
-                              onPressed: null,
+                              onPressed: () {
+                                getOutput("ps -a");
+                              },
                               child: Text(
                                 "All Processes",
                                 style: TextStyle(
@@ -147,7 +164,9 @@ class _DockerHome extends State<DockerHome>{
                           ),
                           Card(
                             child: FlatButton(
-                              onPressed: null,
+                              onPressed: () {
+                                getOutput("--version");
+                              },
                               child: Text(
                                 "Docker Version",
                                 style: TextStyle(
@@ -160,6 +179,35 @@ class _DockerHome extends State<DockerHome>{
                         ],
                       ),
                     ],
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Column(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Output :",
+                      style: TextStyle(
+                        color: Colors.limeAccent[700],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        fontFamily: 'Ubuntu',
+                      ),
+                    )
+                  ),
+                  Text(" "),
+                  RichText(
+                    text: TextSpan(
+                      text: outputOfCommand,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'ubuntu',
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ],
               ),
