@@ -47,7 +47,7 @@ class _DockerHome extends State<DockerHome>{
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.8,
               color: Color(0xff32dbc6),
               child: Column(
                 children: [
@@ -116,7 +116,9 @@ class _DockerHome extends State<DockerHome>{
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           child: FlatButton(
-                            onPressed: null,
+                            onPressed: () {
+                              getOutput("images");
+                            },
                             child: Text(
                               "Available Images",
                               style: TextStyle(
@@ -131,7 +133,9 @@ class _DockerHome extends State<DockerHome>{
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           child: FlatButton(
-                            onPressed: null,
+                            onPressed: () {
+                              getOutput("ps");
+                            },
                             child: Text(
                               "Active Processes",
                               style: TextStyle(
@@ -146,7 +150,9 @@ class _DockerHome extends State<DockerHome>{
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           child: FlatButton(
-                            onPressed: null,
+                            onPressed: () {
+                              getOutput("ps -a");
+                            },
                             child: Text(
                               "All Processes",
                               style: TextStyle(
@@ -161,7 +167,9 @@ class _DockerHome extends State<DockerHome>{
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           child: FlatButton(
-                            onPressed: null,
+                            onPressed: () {
+                              getOutput("--version");
+                            },
                             child: Text(
                               "Docker Version",
                               style: TextStyle(
@@ -174,6 +182,11 @@ class _DockerHome extends State<DockerHome>{
                       ),
                     ],
                   ),
+                  Text("   "),
+                  DottedLine(
+                    dashLength: 20,
+                  ),
+                  Text("   "),
                 ],
               ),
             ),
