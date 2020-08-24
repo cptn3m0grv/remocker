@@ -47,7 +47,7 @@ class _DockerHome extends State<DockerHome>{
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.9,
               color: Color(0xff32dbc6),
               child: Column(
                 children: [
@@ -101,7 +101,7 @@ class _DockerHome extends State<DockerHome>{
                   ),
                   Card(
                     child: Text(
-                      "  Most Common Commands  ",
+                      "  Most Frequent Commands  ",
                       style: TextStyle(
                         fontSize: 20,
                         fontFamily: 'Ubuntu',
@@ -112,71 +112,65 @@ class _DockerHome extends State<DockerHome>{
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Card(
-                            child: FlatButton(
-                              onPressed: () {
-                                getOutput("images");
-                              },
-                              child: Text(
-                                "Availaible Images",
-                                style: TextStyle(
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                ),
+                      Card(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            onPressed: null,
+                            child: Text(
+                              "Available Images",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Ubuntu',
                               ),
                             ),
                           ),
-                          Card(
-                            child: FlatButton(
-                              onPressed: () {
-                                getOutput("ps");
-                              },
-                              child: Text(
-                                "Active Processes",
-                                style: TextStyle(
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                ),
-                              )
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Card(
-                            child: FlatButton(
-                              onPressed: () {
-                                getOutput("ps -a");
-                              },
-                              child: Text(
-                                "All Processes",
-                                style: TextStyle(
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                ),
+                      Card(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            onPressed: null,
+                            child: Text(
+                              "Active Processes",
+                              style: TextStyle(
+                                fontFamily: 'Ubuntu',
+                                fontSize: 20,
                               ),
                             ),
                           ),
-                          Card(
-                            child: FlatButton(
-                              onPressed: () {
-                                getOutput("--version");
-                              },
-                              child: Text(
-                                "Docker Version",
-                                style: TextStyle(
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                ),
+                        ),
+                      ),
+                      Card(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            onPressed: null,
+                            child: Text(
+                              "All Processes",
+                              style: TextStyle(
+                                fontFamily: 'Ubuntu',
+                                fontSize: 20,
                               ),
                             ),
                           ),
-                        ],
+                        ),
+                      ),
+                      Card(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            onPressed: null,
+                            child: Text(
+                              "Docker Version",
+                              style: TextStyle(
+                                fontFamily: 'Ubuntu',
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
