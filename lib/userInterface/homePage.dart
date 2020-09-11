@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homePageContent.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -114,6 +115,7 @@ class HomePage extends StatelessWidget{
         width: double.infinity,
         height: double.infinity,
         color: Color(0xff49BEB7),
+        child: HomePageContent(),
       ),
     );
   }
