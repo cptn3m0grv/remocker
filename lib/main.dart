@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'userInterface/register.dart';
 import 'userInterface/homePage.dart';
 import 'userInterface/basicCommands.dart';
 import 'userInterface/dockerPage.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget{
         '/basicCommands' : (context) => BasicCommands(),
         '/dockerHome' : (context) => DockerHome(),
         '/splashScreen' : (context) => MySplash(),
+        '/registerPage' : (context) => RegisterPage(),
       },
       debugShowCheckedModeBanner: false,
     );

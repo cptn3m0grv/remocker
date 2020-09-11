@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 class HomePageContent extends StatefulWidget{
   @override
@@ -7,6 +8,7 @@ class HomePageContent extends StatefulWidget{
 
 class _HomePageContent extends State<HomePageContent>{
   var userLogin;
+  var userPassword;
   @override
   Widget build(BuildContext context){
     return Center(
@@ -52,7 +54,7 @@ class _HomePageContent extends State<HomePageContent>{
                 obscuringCharacter: "*",
                 obscureText: true,
                 onChanged: (value) {
-                  userLogin = value;
+                  userPassword = value;
                 },
                 style: TextStyle(
                   fontSize: 20,
@@ -97,9 +99,21 @@ class _HomePageContent extends State<HomePageContent>{
             )
           ),
           SizedBox(
-            height: 40,
+            height: 80,
           ),
-          Text("Register")
+          InkWell(
+            child: Text(
+              "Register / Sign Up",
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                fontFamily: 'Ubuntu',
+                fontSize: 20,
+              ),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, '/registerPage');
+            },
+          ),
         ],
       ),
     );

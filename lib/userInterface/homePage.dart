@@ -99,6 +99,38 @@ class HomePage extends StatelessWidget{
                 ],
               ),
             ),
+            SizedBox(
+              height: 70,
+            ),
+            InkWell(
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontFamily: 'Ubuntu',
+                  fontSize: 20,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            InkWell(
+              child: Text(
+                "Register / Sign Up",
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  fontFamily: 'Ubuntu',
+                  fontSize: 20,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/registerPage');
+              },
+            ),
           ],
         ),
       ),
